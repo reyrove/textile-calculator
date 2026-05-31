@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Textile Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="calculator-container">
+    <h1>🧵 Textile Calculator</h1>
+
+    <div class="calc-section">
+      <h2>GSM Calculator</h2>
+      <input type="number" id="fabricWeight" placeholder="Fabric Weight (grams)" />
+      <input type="number" id="fabricArea" placeholder="Fabric Area (m²)" />
+      <button onclick="calculateGSM()">Calculate GSM</button>
+      <p id="gsmResult"></p>
+    </div>
+
+    <div class="calc-section">
+      <h2>Denier ↔ Tex Converter</h2>
+      <input type="number" id="inputValue" placeholder="Value" />
+      <select id="conversionType">
+        <option value="denierToTex">Denier ➜ Tex</option>
+        <option value="texToDenier">Tex ➜ Denier</option>
+      </select>
+      <button onclick="convert()">Convert</button>
+      <p id="conversionResult"></p>
+    </div>
+
+    <div class="calc-section">
+      <h2>Thread Count Calculator</h2>
+      <input type="number" id="warpDensity" placeholder="Warp Density (threads/inch)" />
+      <input type="number" id="weftDensity" placeholder="Weft Density (threads/inch)" />
+      <button onclick="calculateThreadCount()">Calculate Thread Count</button>
+      <p id="threadCountResult"></p>
+    </div>
+
+    <div class="calc-section">
+      <h2>Fabric Cost Calculator</h2>
+      <input type="number" id="gsmCost" placeholder="GSM (g/m²)" />
+      <input type="number" id="costArea" placeholder="Area (m²)" />
+      <input type="number" id="costPerGram" placeholder="Cost per gram ($)" />
+      <button onclick="calculateCost()">Calculate Cost</button>
+      <p id="costResult"></p>
+    </div>
+
+    <div class="calc-section">
+      <h2>Yarn Count Converter</h2>
+      <input type="number" id="yarnInput" placeholder="Yarn Count" />
+      <select id="yarnType">
+        <option value="neToNm">Ne ➜ Nm</option>
+        <option value="nmToNe">Nm ➜ Ne</option>
+      </select>
+      <button onclick="convertYarn()">Convert</button>
+      <p id="yarnResult"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
