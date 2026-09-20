@@ -1,0 +1,72 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #535502;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    margin: 0;
+  }
+  
+  .calculator-container {
+    background: rgb(204, 85, 75);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .calc-section {
+    margin-bottom: 2rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+  }
+  
+  .calc-section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+  
+  .calc-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.6rem;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background: #357ABD;
+  }
+  
+  p {
+    margin-top: 0.5rem;
+    font-weight: bold;
+  }
+  
