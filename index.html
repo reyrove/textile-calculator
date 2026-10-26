@@ -3,64 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Textile Calculator</title>
+  <title>Textile Calculator — Reyrove</title>
+  <meta name="description" content="A small set of textile engineering calculators: GSM, denier ↔ tex, thread count, fabric cost, and Ne ↔ Nm yarn count. Each calculation states its formula." />
+  <meta name="author" content="Reyhaneh Daneshdoost" />
   <link rel="icon" type="image/svg+xml" href="fav.svg">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="calculator-container">
-    <h1>🧵 Textile Calculator</h1>
+  <main class="container">
 
-    <div class="calc-section">
-      <h2>GSM Calculator</h2>
-      <input type="number" id="fabricWeight" placeholder="Fabric Weight (grams)" />
-      <input type="number" id="fabricArea" placeholder="Fabric Area (m²)" />
-      <button onclick="calculateGSM()">Calculate GSM</button>
-      <p id="gsmResult"></p>
-    </div>
+    <header class="page-head">
+      <p class="eyebrow">REYROVE · TOOLS</p>
+      <h1>🧵 Textile Calculator</h1>
+      <p class="lede">
+        Five small calculators for common textile-engineering
+        quantities. Each section states the formula it uses, so the
+        output can be checked by hand.
+      </p>
+    </header>
 
-    <div class="calc-section">
-      <h2>Denier ↔ Tex Converter</h2>
-      <input type="number" id="inputValue" placeholder="Value" />
-      <select id="conversionType">
-        <option value="denierToTex">Denier ➜ Tex</option>
-        <option value="texToDenier">Tex ➜ Denier</option>
-      </select>
-      <button onclick="convert()">Convert</button>
-      <p id="conversionResult"></p>
-    </div>
+    <!-- ===== GSM ===== -->
+    <section class="calc-section" aria-labelledby="gsm-heading">
+      <header>
+        <h2 id="gsm-heading">GSM Calculator</h2>
+        <p class="formula">GSM = fabric weight (g) ÷ fabric area (m²)</p>
+      </header>
 
-    <div class="calc-section">
-      <h2>Thread Count Calculator</h2>
-      <input type="number" id="warpDensity" placeholder="Warp Density (threads/inch)" />
-      <input type="number" id="weftDensity" placeholder="Weft Density (threads/inch)" />
-      <button onclick="calculateThreadCount()">Calculate Thread Count</button>
-      <p id="threadCountResult"></p>
-    </div>
+      <form id="gsmForm" novalidate>
+        <div class="field">
+          <label for="fabricWeight">Fabric weight (g)</label>
+          <input type="number" id="fabricWeight" min="0" step="any" inputmode="decimal" required />
+        </div>
 
-    <div class="calc-section">
-      <h2>Fabric Cost Calculator</h2>
-      <input type="number" id="gsmCost" placeholder="GSM (g/m²)" />
-      <input type="number" id="costArea" placeholder="Area (m²)" />
-      <input type="number" id="costPerGram" placeholder="Cost per gram ($)" />
-      <button onclick="calculateCost()">Calculate Cost</button>
-      <p id="costResult"></p>
-    </div>
+        <div class="field">
+          <label for="fabricArea">Fabric area (m²)</label>
+          <input type="number" id="fabricArea" min="0" step="any" inputmode="decimal" required />
+        </div>
 
-    <div class="calc-section">
-      <h2>Yarn Count Converter</h2>
-      <input type="number" id="yarnInput" placeholder="Yarn Count" />
-      <select id="yarnType">
-        <option value="neToNm">Ne ➜ Nm</option>
-        <option value="nmToNe">Nm ➜ Ne</option>
-      </select>
-      <button onclick="convertYarn()">Convert</button>
-      <p id="yarnResult"></p>
-    </div>
-  </div>
+        <button type="submit">Calculate GSM</button>
+      </form>
+
+      <p id="gsmResult" class="result" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ===== DENIER ↔ TEX ===== -->
+    <section class="calc-section" aria-labelledby="denier-heading">
+      <header>
+        <h2 id="denier-heading">Denier ↔ Tex Converter</h2>
+        <p class="formula">denier = 9 × tex · tex = denier ÷ 9</p>
+      </header>
+
+      <form id="denierForm" novalidate>
+        <div class="field">
+          <label for="inputValue">Value</label>
+          <input type="number" id="inputValue" min="0" step="any" inputmode="decimal" required />
+        </div>
+
+        <div class="field">
+          <label for="conversionType">Direction</label>
+          <select id="conversionType">
+            <option value="denierToTex">Denier ➜ Tex</option>
+            <option value="texToDenier">Tex ➜ Denier</option>
+          </select>
+        </div>
+
+        <button type="submit">Convert</button>
+      </form>
+
+      <p id="conversionResult" class="result" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ===== THREAD COUNT ===== -->
+    <section class="calc-section" aria-labelledby="thread-heading">
+      <header>
+        <h2 id="thread-heading">Thread Count Calculator</h2>
+        <p class="formula">thread count = warp density + weft density (threads/inch)</p>
+      </header>
+
+      <form id="threadForm" novalidate>
+        <div class="field">
+          <label for="warpDensity">Warp density (threads/inch)</label>
+          <input type="number" id="warpDensity" min="0" step="any" inputmode="decimal" required />
+        </div>
+
+        <div class="field">
+          <label for="weftDensity">Weft density (threads/inch)</label>
+          <input type="number" id="weftDensity" min="0" step="any" inputmode="decimal" required />
+        </div>
+
+        <button type="submit">Calculate Thread Count</button>
+      </form>
+
+      <p id="threadCountResult" class="result" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ===== FABRIC COST ===== -->
+    <section class="calc-section" aria-labelledby="cost-heading">
+      <header>
+        <h2 id="cost-heading">Fabric Cost Calculator</h2>
+        <p class="formula">total cost = GSM × area × cost per gram</p>
+      </header>
+
+      <form id="costForm" novalidate>
+        <div class="field">
+          <label for="gsmCost">GSM (g/m²)</label>
+          <input type="number" id="gsmCost" min="0" step="any" inputmode="decimal" required />
+        </div>
+
+        <div class="field">
+          <label for="costArea">Area (m²)</label>
+          <input type="number" id="costArea" min="0" step="any" inputmode="decimal" required />
+        </div>
+
+        <div class="field">
+          <label for="costPerGram">Cost per gram ($)</label>
+          <input type="number" id="costPerGram" min="0" step="any" inputmode="decimal" required />
+        </div>
+
+        <button type="submit">Calculate Cost</button>
+      </form>
+
+      <p id="costResult" class="result" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ===== YARN COUNT ===== -->
+    <section class="calc-section" aria-labelledby="yarn-heading">
+      <header>
+        <h2 id="yarn-heading">Yarn Count Converter</h2>
+        <p class="formula">Nm = Ne × 1.693 · Ne = Nm ÷ 1.693</p>
+      </header>
+
+      <form id="yarnForm" novalidate>
+        <div class="field">
+          <label for="yarnInput">Yarn count</label>
+          <input type="number" id="yarnInput" min="0" step="any" inputmode="decimal" required />
+        </div>
+
+        <div class="field">
+          <label for="yarnType">Direction</label>
+          <select id="yarnType">
+            <option value="neToNm">Ne ➜ Nm</option>
+            <option value="nmToNe">Nm ➜ Ne</option>
+          </select>
+        </div>
+
+        <button type="submit">Convert</button>
+      </form>
+
+      <p id="yarnResult" class="result" role="status" aria-live="polite"></p>
+    </section>
+
+    <p class="back-link">
+      <a href="https://reyrove.github.io/">← back to reyrove</a>
+    </p>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-

@@ -1,72 +1,218 @@
+:root {
+  --bg: #0f0e0c;
+  --panel: #16130f;
+  --paper: #e9dfcf;
+  --muted: #9d958a;
+  --gold: #d4b483;
+  --line: rgba(212, 180, 131, 0.18);
+  --danger: #d98a7a;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "DM Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #535502;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    margin: 0;
-  }
-  
-  .calculator-container {
-    background: rgb(204, 85, 75);
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-  
-  h1 {
-    font-size: 1.6rem;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .calc-section {
-    margin-bottom: 2rem;
-    border-top: 1px solid #eee;
-    padding-top: 1rem;
-  }
-  
-  .calc-section:first-of-type {
-    border-top: none;
-    padding-top: 0;
-  }
-  
-  .calc-section h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  input, select {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  
-  button {
-    width: 100%;
-    padding: 0.6rem;
-    background: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  button:hover {
-    background: #357ABD;
-  }
-  
-  p {
-    margin-top: 0.5rem;
-    font-weight: bold;
-  }
-  
+  background: var(--bg);
+  color: var(--paper);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold); }
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 48px);
+}
+
+/* ---------- Header ---------- */
+.page-head {
+  margin-bottom: clamp(24px, 4vw, 36px);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.page-head h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.lede {
+  color: var(--muted);
+  font-size: 0.94rem;
+  margin: 0;
+}
+
+/* ---------- Sections ---------- */
+.calc-section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: clamp(18px, 2.4vw, 26px);
+  margin-bottom: 16px;
+}
+
+.calc-section header {
+  margin-bottom: 18px;
+}
+
+.calc-section h2 {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+
+.formula {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Fields ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.field label {
+  font-size: 0.8rem;
+  color: var(--paper);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 9px 11px;
+  background: #0c0a08;
+  color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.field input::placeholder {
+  color: var(--muted);
+  font-family: var(--sans);
+  opacity: 0.6;
+}
+
+/* ---------- Buttons ---------- */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 4px;
+  background: transparent;
+  color: var(--paper);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: var(--gold);
+  color: #17130d;
+}
+
+button[type="submit"]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Results ---------- */
+.result {
+  margin: 14px 0 0;
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  color: var(--gold);
+  min-height: 1.4em;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.copy-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.copy-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ---------- Footer ---------- */
+.back-link {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.back-link a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.back-link a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .container { padding: 16px; }
+  .calc-section { padding: 16px; }
+  .result { font-size: 0.8rem; }
+}
